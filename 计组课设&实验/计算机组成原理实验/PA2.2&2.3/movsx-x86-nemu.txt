@@ -1,0 +1,179 @@
+
+/home/zhengweilin/ics2021/nexus-am/tests/cputest/build/movsx-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 0f 00 00 00       	call   10001e <_trm_init>
+
+0010000f <serial_init>:
+  10000f:	55                   	push   %ebp
+  100010:	89 e5                	mov    %esp,%ebp
+  100012:	90                   	nop
+  100013:	5d                   	pop    %ebp
+  100014:	c3                   	ret    
+
+00100015 <_halt>:
+  100015:	55                   	push   %ebp
+  100016:	89 e5                	mov    %esp,%ebp
+  100018:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001b:	d6                   	(bad)  
+  10001c:	eb fe                	jmp    10001c <_halt+0x7>
+
+0010001e <_trm_init>:
+  10001e:	55                   	push   %ebp
+  10001f:	89 e5                	mov    %esp,%ebp
+  100021:	83 ec 18             	sub    $0x18,%esp
+  100024:	e8 e6 ff ff ff       	call   10000f <serial_init>
+  100029:	e8 30 00 00 00       	call   10005e <main>
+  10002e:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100031:	83 ec 0c             	sub    $0xc,%esp
+  100034:	ff 75 f4             	pushl  -0xc(%ebp)
+  100037:	e8 d9 ff ff ff       	call   100015 <_halt>
+  10003c:	83 c4 10             	add    $0x10,%esp
+  10003f:	90                   	nop
+  100040:	c9                   	leave  
+  100041:	c3                   	ret    
+
+00100042 <nemu_assert>:
+  100042:	55                   	push   %ebp
+  100043:	89 e5                	mov    %esp,%ebp
+  100045:	83 ec 08             	sub    $0x8,%esp
+  100048:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)
+  10004c:	75 0d                	jne    10005b <nemu_assert+0x19>
+  10004e:	83 ec 0c             	sub    $0xc,%esp
+  100051:	6a 01                	push   $0x1
+  100053:	e8 bd ff ff ff       	call   100015 <_halt>
+  100058:	83 c4 10             	add    $0x10,%esp
+  10005b:	90                   	nop
+  10005c:	c9                   	leave  
+  10005d:	c3                   	ret    
+
+0010005e <main>:
+  10005e:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  100062:	83 e4 f0             	and    $0xfffffff0,%esp
+  100065:	ff 71 fc             	pushl  -0x4(%ecx)
+  100068:	55                   	push   %ebp
+  100069:	89 e5                	mov    %esp,%ebp
+  10006b:	51                   	push   %ecx
+  10006c:	83 ec 04             	sub    $0x4,%esp
+  10006f:	c7 05 60 02 10 00 00 	movl   $0x0,0x100260
+  100076:	00 00 00 
+  100079:	c7 05 64 02 10 00 01 	movl   $0x1,0x100264
+  100080:	00 00 00 
+  100083:	c7 05 68 02 10 00 02 	movl   $0x2,0x100268
+  10008a:	00 00 00 
+  10008d:	c7 05 6c 02 10 00 03 	movl   $0x3,0x10026c
+  100094:	00 00 00 
+  100097:	c7 05 70 02 10 00 04 	movl   $0x4,0x100270
+  10009e:	00 00 00 
+  1000a1:	a1 6c 02 10 00       	mov    0x10026c,%eax
+  1000a6:	a3 40 02 10 00       	mov    %eax,0x100240
+  1000ab:	a1 40 02 10 00       	mov    0x100240,%eax
+  1000b0:	a3 74 02 10 00       	mov    %eax,0x100274
+  1000b5:	c6 05 88 02 10 00 61 	movb   $0x61,0x100288
+  1000bc:	a0 88 02 10 00       	mov    0x100288,%al
+  1000c1:	3c 61                	cmp    $0x61,%al
+  1000c3:	0f 94 c0             	sete   %al
+  1000c6:	0f b6 c0             	movzbl %al,%eax
+  1000c9:	83 ec 0c             	sub    $0xc,%esp
+  1000cc:	50                   	push   %eax
+  1000cd:	e8 70 ff ff ff       	call   100042 <nemu_assert>
+  1000d2:	83 c4 10             	add    $0x10,%esp
+  1000d5:	a0 88 02 10 00       	mov    0x100288,%al
+  1000da:	a2 89 02 10 00       	mov    %al,0x100289
+  1000df:	a0 89 02 10 00       	mov    0x100289,%al
+  1000e4:	3c 61                	cmp    $0x61,%al
+  1000e6:	0f 94 c0             	sete   %al
+  1000e9:	0f b6 c0             	movzbl %al,%eax
+  1000ec:	83 ec 0c             	sub    $0xc,%esp
+  1000ef:	50                   	push   %eax
+  1000f0:	e8 4d ff ff ff       	call   100042 <nemu_assert>
+  1000f5:	83 c4 10             	add    $0x10,%esp
+  1000f8:	a0 88 02 10 00       	mov    0x100288,%al
+  1000fd:	0f be c0             	movsbl %al,%eax
+  100100:	a3 60 02 10 00       	mov    %eax,0x100260
+  100105:	a1 60 02 10 00       	mov    0x100260,%eax
+  10010a:	83 f8 61             	cmp    $0x61,%eax
+  10010d:	0f 94 c0             	sete   %al
+  100110:	0f b6 c0             	movzbl %al,%eax
+  100113:	83 ec 0c             	sub    $0xc,%esp
+  100116:	50                   	push   %eax
+  100117:	e8 26 ff ff ff       	call   100042 <nemu_assert>
+  10011c:	83 c4 10             	add    $0x10,%esp
+  10011f:	c6 05 89 02 10 00 80 	movb   $0x80,0x100289
+  100126:	a0 89 02 10 00       	mov    0x100289,%al
+  10012b:	0f be c0             	movsbl %al,%eax
+  10012e:	a3 60 02 10 00       	mov    %eax,0x100260
+  100133:	a1 64 02 10 00       	mov    0x100264,%eax
+  100138:	83 f8 01             	cmp    $0x1,%eax
+  10013b:	0f 94 c0             	sete   %al
+  10013e:	0f b6 c0             	movzbl %al,%eax
+  100141:	83 ec 0c             	sub    $0xc,%esp
+  100144:	50                   	push   %eax
+  100145:	e8 f8 fe ff ff       	call   100042 <nemu_assert>
+  10014a:	83 c4 10             	add    $0x10,%esp
+  10014d:	a1 68 02 10 00       	mov    0x100268,%eax
+  100152:	83 f8 02             	cmp    $0x2,%eax
+  100155:	0f 94 c0             	sete   %al
+  100158:	0f b6 c0             	movzbl %al,%eax
+  10015b:	83 ec 0c             	sub    $0xc,%esp
+  10015e:	50                   	push   %eax
+  10015f:	e8 de fe ff ff       	call   100042 <nemu_assert>
+  100164:	83 c4 10             	add    $0x10,%esp
+  100167:	a1 6c 02 10 00       	mov    0x10026c,%eax
+  10016c:	83 f8 03             	cmp    $0x3,%eax
+  10016f:	0f 94 c0             	sete   %al
+  100172:	0f b6 c0             	movzbl %al,%eax
+  100175:	83 ec 0c             	sub    $0xc,%esp
+  100178:	50                   	push   %eax
+  100179:	e8 c4 fe ff ff       	call   100042 <nemu_assert>
+  10017e:	83 c4 10             	add    $0x10,%esp
+  100181:	a1 70 02 10 00       	mov    0x100270,%eax
+  100186:	83 f8 04             	cmp    $0x4,%eax
+  100189:	0f 94 c0             	sete   %al
+  10018c:	0f b6 c0             	movzbl %al,%eax
+  10018f:	83 ec 0c             	sub    $0xc,%esp
+  100192:	50                   	push   %eax
+  100193:	e8 aa fe ff ff       	call   100042 <nemu_assert>
+  100198:	83 c4 10             	add    $0x10,%esp
+  10019b:	a1 40 02 10 00       	mov    0x100240,%eax
+  1001a0:	83 f8 03             	cmp    $0x3,%eax
+  1001a3:	0f 94 c0             	sete   %al
+  1001a6:	0f b6 c0             	movzbl %al,%eax
+  1001a9:	83 ec 0c             	sub    $0xc,%esp
+  1001ac:	50                   	push   %eax
+  1001ad:	e8 90 fe ff ff       	call   100042 <nemu_assert>
+  1001b2:	83 c4 10             	add    $0x10,%esp
+  1001b5:	a1 74 02 10 00       	mov    0x100274,%eax
+  1001ba:	83 f8 03             	cmp    $0x3,%eax
+  1001bd:	0f 94 c0             	sete   %al
+  1001c0:	0f b6 c0             	movzbl %al,%eax
+  1001c3:	83 ec 0c             	sub    $0xc,%esp
+  1001c6:	50                   	push   %eax
+  1001c7:	e8 76 fe ff ff       	call   100042 <nemu_assert>
+  1001cc:	83 c4 10             	add    $0x10,%esp
+  1001cf:	a0 89 02 10 00       	mov    0x100289,%al
+  1001d4:	3c 80                	cmp    $0x80,%al
+  1001d6:	0f 94 c0             	sete   %al
+  1001d9:	0f b6 c0             	movzbl %al,%eax
+  1001dc:	83 ec 0c             	sub    $0xc,%esp
+  1001df:	50                   	push   %eax
+  1001e0:	e8 5d fe ff ff       	call   100042 <nemu_assert>
+  1001e5:	83 c4 10             	add    $0x10,%esp
+  1001e8:	a1 60 02 10 00       	mov    0x100260,%eax
+  1001ed:	83 f8 80             	cmp    $0xffffff80,%eax
+  1001f0:	0f 94 c0             	sete   %al
+  1001f3:	0f b6 c0             	movzbl %al,%eax
+  1001f6:	83 ec 0c             	sub    $0xc,%esp
+  1001f9:	50                   	push   %eax
+  1001fa:	e8 43 fe ff ff       	call   100042 <nemu_assert>
+  1001ff:	83 c4 10             	add    $0x10,%esp
+  100202:	b8 00 00 00 00       	mov    $0x0,%eax
+  100207:	8b 4d fc             	mov    -0x4(%ebp),%ecx
+  10020a:	c9                   	leave  
+  10020b:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  10020e:	c3                   	ret    

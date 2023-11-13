@@ -1,0 +1,223 @@
+{
+  "id": "83d77c84-bae4-46af-916a-7030249cfcc3",
+  "version": "2.0",
+  "name": "Test",
+  "url": "https://www.so.com",
+  "tests": [{
+    "id": "4958109d-a0bb-464c-a002-72e21b398b82",
+    "name": "001",
+    "commands": [{
+      "id": "9e7f707c-9c0d-4adb-a396-185a29310d4f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e3ea5c41-2ab9-464c-877e-a2d550fb9366",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7052cf9a-908e-413d-96c9-29d20c7c30f7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a06b8dec-d99f-418c-bb55-f0343eb0d2ea",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bili-remen",
+      "targets": [
+        ["css=.bili-remen", "css:finder"],
+        ["xpath=//div[@id='primaryPageTab']/ul/li[3]/a/div/i", "xpath:idRelative"],
+        ["xpath=//li[3]/a/div/i", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win8277",
+      "windowTimeout": 2000
+    }, {
+      "id": "f53ec231-7979-4b94-ae24-e8e65b7515e8",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win8277}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "58c610a0-0ee9-4def-9718-044aaa98518d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-tabs__item:nth-child(2) > div",
+      "targets": [
+        ["css=.nav-tabs__item:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e88ae2a1-e541-45e0-8e78-1c1028ce3840",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-tabs__item:nth-child(3) span",
+      "targets": [
+        ["css=.nav-tabs__item:nth-child(3) span", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div[3]/div/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div[3]/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'入站必刷')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3753675-7f80-4d09-9e9b-6094a4de5e04",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mask-tips-step",
+      "targets": [
+        ["css=.mask-tips-step", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div[4]/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div[4]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b273ca62-a062-42ba-9bcd-32528fe341d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rank-item:nth-child(1) .info",
+      "targets": [
+        ["css=.rank-item:nth-child(1) .info", "css:finder"],
+        ["xpath=//div[@id='app']/div/div[2]/div[2]/ul/li/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//li/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win1799",
+      "windowTimeout": 2000
+    }, {
+      "id": "e500255f-6abe-4002-8d78-a18439f2fe18",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win1799}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d374395-584e-4adf-9e33-22f765c8ddb4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.van-icon-videodetails_like",
+      "targets": [
+        ["css=.van-icon-videodetails_like", "css:finder"],
+        ["xpath=//div[@id='arc_toolbar_report']/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[3]/div/span/i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "2b025b26-c179-4859-9266-68136fe41696",
+    "name": "002",
+    "commands": [{
+      "id": "c6e2c040-b79e-43dc-a434-be4f15c8e547",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afc7d5c0-1301-4650-8f3d-df0f9de11afd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "84df5c82-4327-42d5-8f0f-7c44b3561de1",
+      "comment": "",
+      "command": "type",
+      "target": "id=input",
+      "targets": [
+        ["id=input", "id"],
+        ["name=q", "name"],
+        ["css=#input", "css:finder"],
+        ["xpath=//input[@id='input']", "xpath:attributes"],
+        ["xpath=//div[@id='suggest-align']/input[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/input[2]", "xpath:position"]
+      ],
+      "value": "百度贴吧"
+    }, {
+      "id": "2e6e320c-5136-439a-82a7-42a2c0621e09",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=input",
+      "targets": [
+        ["id=input", "id"],
+        ["name=q", "name"],
+        ["css=#input", "css:finder"],
+        ["xpath=//input[@id='input']", "xpath:attributes"],
+        ["xpath=//div[@id='suggest-align']/input[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/input[2]", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "e02780e7-ba27-462c-8674-0f8b1aa0a011",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=百度贴吧——全球最大的中文社区",
+      "targets": [
+        ["linkText=百度贴吧——全球最大的中文社区", "linkText"],
+        ["css=.mark-nowrap > a", "css:finder"],
+        ["xpath=//div[@id='main']/ul/li/h3/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.so.com/link?m=bPnHlA3r4rte7hWGdi56zp6dxsBPTYxUX4torfjJIXomdsdMhhY%2Bsbl8WtlvR0Z52zImsTC37Y4JBkZd7mm6JmojMJAuodjxLPnUaNBO3oJt6Nm%2B25lyn3YOJH700l8MRffZU8rDQ2Mk6K697jw84Ew%3D%3D')]", "xpath:href"],
+        ["xpath=//h3/a", "xpath:position"],
+        ["xpath=//a[contains(.,'百度贴吧——全球最大的中文社区')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win7442",
+      "windowTimeout": 2000
+    }, {
+      "id": "433f0ba3-9205-4155-a2de-ec9427a7aef1",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win7442}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "71853cd4-d604-4ccc-b02b-450f1afaa0c0",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.r18f4fbda1 img",
+      "targets": [
+        ["css=.r18f4fbda1 img", "css:finder"],
+        ["xpath=(//img[@alt='贴吧图片'])[2]", "xpath:img"],
+        ["xpath=//div[@id='carousel_wrap']/ul/li/div[2]/a/img", "xpath:idRelative"],
+        ["xpath=//div[2]/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "229581d7-1f08-4c47-b0e6-bb79ad58798f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.r18f4fbda1 img",
+      "targets": [
+        ["css=.r18f4fbda1 img", "css:finder"],
+        ["xpath=(//img[@alt='贴吧图片'])[2]", "xpath:img"],
+        ["xpath=//div[@id='carousel_wrap']/ul/li/div[2]/a/img", "xpath:idRelative"],
+        ["xpath=//div[2]/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8623ecef-f8b2-43ef-aba1-1e607377e761",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4958109d-a0bb-464c-a002-72e21b398b82"]
+  }],
+  "urls": ["https://www.bilibili.com/"],
+  "plugins": []
+}

@@ -1,0 +1,226 @@
+
+/home/zhengweilin/ics2021/nexus-am/tests/cputest/build/quick-sort-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 0f 00 00 00       	call   10001e <_trm_init>
+
+0010000f <serial_init>:
+  10000f:	55                   	push   %ebp
+  100010:	89 e5                	mov    %esp,%ebp
+  100012:	90                   	nop
+  100013:	5d                   	pop    %ebp
+  100014:	c3                   	ret    
+
+00100015 <_halt>:
+  100015:	55                   	push   %ebp
+  100016:	89 e5                	mov    %esp,%ebp
+  100018:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001b:	d6                   	(bad)  
+  10001c:	eb fe                	jmp    10001c <_halt+0x7>
+
+0010001e <_trm_init>:
+  10001e:	55                   	push   %ebp
+  10001f:	89 e5                	mov    %esp,%ebp
+  100021:	83 ec 18             	sub    $0x18,%esp
+  100024:	e8 e6 ff ff ff       	call   10000f <serial_init>
+  100029:	e8 5b 01 00 00       	call   100189 <main>
+  10002e:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100031:	83 ec 0c             	sub    $0xc,%esp
+  100034:	ff 75 f4             	pushl  -0xc(%ebp)
+  100037:	e8 d9 ff ff ff       	call   100015 <_halt>
+  10003c:	83 c4 10             	add    $0x10,%esp
+  10003f:	90                   	nop
+  100040:	c9                   	leave  
+  100041:	c3                   	ret    
+
+00100042 <nemu_assert>:
+  100042:	55                   	push   %ebp
+  100043:	89 e5                	mov    %esp,%ebp
+  100045:	83 ec 08             	sub    $0x8,%esp
+  100048:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)
+  10004c:	75 0d                	jne    10005b <nemu_assert+0x19>
+  10004e:	83 ec 0c             	sub    $0xc,%esp
+  100051:	6a 01                	push   $0x1
+  100053:	e8 bd ff ff ff       	call   100015 <_halt>
+  100058:	83 c4 10             	add    $0x10,%esp
+  10005b:	90                   	nop
+  10005c:	c9                   	leave  
+  10005d:	c3                   	ret    
+
+0010005e <partition>:
+  10005e:	55                   	push   %ebp
+  10005f:	89 e5                	mov    %esp,%ebp
+  100061:	83 ec 10             	sub    $0x10,%esp
+  100064:	8b 45 0c             	mov    0xc(%ebp),%eax
+  100067:	8d 14 85 00 00 00 00 	lea    0x0(,%eax,4),%edx
+  10006e:	8b 45 08             	mov    0x8(%ebp),%eax
+  100071:	01 d0                	add    %edx,%eax
+  100073:	8b 00                	mov    (%eax),%eax
+  100075:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100078:	8b 45 0c             	mov    0xc(%ebp),%eax
+  10007b:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  10007e:	8b 45 10             	mov    0x10(%ebp),%eax
+  100081:	89 45 f8             	mov    %eax,-0x8(%ebp)
+  100084:	e9 88 00 00 00       	jmp    100111 <partition+0xb3>
+  100089:	ff 4d f8             	decl   -0x8(%ebp)
+  10008c:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  10008f:	3b 45 f8             	cmp    -0x8(%ebp),%eax
+  100092:	7d 16                	jge    1000aa <partition+0x4c>
+  100094:	8b 45 f8             	mov    -0x8(%ebp),%eax
+  100097:	8d 14 85 00 00 00 00 	lea    0x0(,%eax,4),%edx
+  10009e:	8b 45 08             	mov    0x8(%ebp),%eax
+  1000a1:	01 d0                	add    %edx,%eax
+  1000a3:	8b 00                	mov    (%eax),%eax
+  1000a5:	39 45 f4             	cmp    %eax,-0xc(%ebp)
+  1000a8:	7c df                	jl     100089 <partition+0x2b>
+  1000aa:	8b 45 f8             	mov    -0x8(%ebp),%eax
+  1000ad:	8d 14 85 00 00 00 00 	lea    0x0(,%eax,4),%edx
+  1000b4:	8b 45 08             	mov    0x8(%ebp),%eax
+  1000b7:	01 d0                	add    %edx,%eax
+  1000b9:	8b 55 fc             	mov    -0x4(%ebp),%edx
+  1000bc:	8d 0c 95 00 00 00 00 	lea    0x0(,%edx,4),%ecx
+  1000c3:	8b 55 08             	mov    0x8(%ebp),%edx
+  1000c6:	01 ca                	add    %ecx,%edx
+  1000c8:	8b 00                	mov    (%eax),%eax
+  1000ca:	89 02                	mov    %eax,(%edx)
+  1000cc:	eb 03                	jmp    1000d1 <partition+0x73>
+  1000ce:	ff 45 fc             	incl   -0x4(%ebp)
+  1000d1:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1000d4:	3b 45 f8             	cmp    -0x8(%ebp),%eax
+  1000d7:	7d 16                	jge    1000ef <partition+0x91>
+  1000d9:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1000dc:	8d 14 85 00 00 00 00 	lea    0x0(,%eax,4),%edx
+  1000e3:	8b 45 08             	mov    0x8(%ebp),%eax
+  1000e6:	01 d0                	add    %edx,%eax
+  1000e8:	8b 00                	mov    (%eax),%eax
+  1000ea:	39 45 f4             	cmp    %eax,-0xc(%ebp)
+  1000ed:	7d df                	jge    1000ce <partition+0x70>
+  1000ef:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1000f2:	8d 14 85 00 00 00 00 	lea    0x0(,%eax,4),%edx
+  1000f9:	8b 45 08             	mov    0x8(%ebp),%eax
+  1000fc:	01 d0                	add    %edx,%eax
+  1000fe:	8b 55 f8             	mov    -0x8(%ebp),%edx
+  100101:	8d 0c 95 00 00 00 00 	lea    0x0(,%edx,4),%ecx
+  100108:	8b 55 08             	mov    0x8(%ebp),%edx
+  10010b:	01 ca                	add    %ecx,%edx
+  10010d:	8b 00                	mov    (%eax),%eax
+  10010f:	89 02                	mov    %eax,(%edx)
+  100111:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100114:	3b 45 f8             	cmp    -0x8(%ebp),%eax
+  100117:	0f 8c 6f ff ff ff    	jl     10008c <partition+0x2e>
+  10011d:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100120:	8d 14 85 00 00 00 00 	lea    0x0(,%eax,4),%edx
+  100127:	8b 45 08             	mov    0x8(%ebp),%eax
+  10012a:	01 c2                	add    %eax,%edx
+  10012c:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  10012f:	89 02                	mov    %eax,(%edx)
+  100131:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100134:	c9                   	leave  
+  100135:	c3                   	ret    
+
+00100136 <quick_sort>:
+  100136:	55                   	push   %ebp
+  100137:	89 e5                	mov    %esp,%ebp
+  100139:	83 ec 18             	sub    $0x18,%esp
+  10013c:	8b 45 0c             	mov    0xc(%ebp),%eax
+  10013f:	3b 45 10             	cmp    0x10(%ebp),%eax
+  100142:	7d 42                	jge    100186 <quick_sort+0x50>
+  100144:	ff 75 10             	pushl  0x10(%ebp)
+  100147:	ff 75 0c             	pushl  0xc(%ebp)
+  10014a:	ff 75 08             	pushl  0x8(%ebp)
+  10014d:	e8 0c ff ff ff       	call   10005e <partition>
+  100152:	83 c4 0c             	add    $0xc,%esp
+  100155:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100158:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  10015b:	48                   	dec    %eax
+  10015c:	83 ec 04             	sub    $0x4,%esp
+  10015f:	50                   	push   %eax
+  100160:	ff 75 0c             	pushl  0xc(%ebp)
+  100163:	ff 75 08             	pushl  0x8(%ebp)
+  100166:	e8 cb ff ff ff       	call   100136 <quick_sort>
+  10016b:	83 c4 10             	add    $0x10,%esp
+  10016e:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  100171:	40                   	inc    %eax
+  100172:	83 ec 04             	sub    $0x4,%esp
+  100175:	ff 75 10             	pushl  0x10(%ebp)
+  100178:	50                   	push   %eax
+  100179:	ff 75 08             	pushl  0x8(%ebp)
+  10017c:	e8 b5 ff ff ff       	call   100136 <quick_sort>
+  100181:	83 c4 10             	add    $0x10,%esp
+  100184:	eb 01                	jmp    100187 <quick_sort+0x51>
+  100186:	90                   	nop
+  100187:	c9                   	leave  
+  100188:	c3                   	ret    
+
+00100189 <main>:
+  100189:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  10018d:	83 e4 f0             	and    $0xfffffff0,%esp
+  100190:	ff 71 fc             	pushl  -0x4(%ecx)
+  100193:	55                   	push   %ebp
+  100194:	89 e5                	mov    %esp,%ebp
+  100196:	51                   	push   %ecx
+  100197:	83 ec 14             	sub    $0x14,%esp
+  10019a:	83 ec 04             	sub    $0x4,%esp
+  10019d:	6a 13                	push   $0x13
+  10019f:	6a 00                	push   $0x0
+  1001a1:	68 80 02 10 00       	push   $0x100280
+  1001a6:	e8 8b ff ff ff       	call   100136 <quick_sort>
+  1001ab:	83 c4 10             	add    $0x10,%esp
+  1001ae:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  1001b5:	eb 22                	jmp    1001d9 <main+0x50>
+  1001b7:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  1001ba:	8b 04 85 80 02 10 00 	mov    0x100280(,%eax,4),%eax
+  1001c1:	39 45 f4             	cmp    %eax,-0xc(%ebp)
+  1001c4:	0f 94 c0             	sete   %al
+  1001c7:	0f b6 c0             	movzbl %al,%eax
+  1001ca:	83 ec 0c             	sub    $0xc,%esp
+  1001cd:	50                   	push   %eax
+  1001ce:	e8 6f fe ff ff       	call   100042 <nemu_assert>
+  1001d3:	83 c4 10             	add    $0x10,%esp
+  1001d6:	ff 45 f4             	incl   -0xc(%ebp)
+  1001d9:	83 7d f4 13          	cmpl   $0x13,-0xc(%ebp)
+  1001dd:	7e d8                	jle    1001b7 <main+0x2e>
+  1001df:	83 7d f4 14          	cmpl   $0x14,-0xc(%ebp)
+  1001e3:	0f 94 c0             	sete   %al
+  1001e6:	0f b6 c0             	movzbl %al,%eax
+  1001e9:	83 ec 0c             	sub    $0xc,%esp
+  1001ec:	50                   	push   %eax
+  1001ed:	e8 50 fe ff ff       	call   100042 <nemu_assert>
+  1001f2:	83 c4 10             	add    $0x10,%esp
+  1001f5:	83 ec 04             	sub    $0x4,%esp
+  1001f8:	6a 13                	push   $0x13
+  1001fa:	6a 00                	push   $0x0
+  1001fc:	68 80 02 10 00       	push   $0x100280
+  100201:	e8 30 ff ff ff       	call   100136 <quick_sort>
+  100206:	83 c4 10             	add    $0x10,%esp
+  100209:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  100210:	eb 22                	jmp    100234 <main+0xab>
+  100212:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  100215:	8b 04 85 80 02 10 00 	mov    0x100280(,%eax,4),%eax
+  10021c:	39 45 f4             	cmp    %eax,-0xc(%ebp)
+  10021f:	0f 94 c0             	sete   %al
+  100222:	0f b6 c0             	movzbl %al,%eax
+  100225:	83 ec 0c             	sub    $0xc,%esp
+  100228:	50                   	push   %eax
+  100229:	e8 14 fe ff ff       	call   100042 <nemu_assert>
+  10022e:	83 c4 10             	add    $0x10,%esp
+  100231:	ff 45 f4             	incl   -0xc(%ebp)
+  100234:	83 7d f4 13          	cmpl   $0x13,-0xc(%ebp)
+  100238:	7e d8                	jle    100212 <main+0x89>
+  10023a:	83 7d f4 14          	cmpl   $0x14,-0xc(%ebp)
+  10023e:	0f 94 c0             	sete   %al
+  100241:	0f b6 c0             	movzbl %al,%eax
+  100244:	83 ec 0c             	sub    $0xc,%esp
+  100247:	50                   	push   %eax
+  100248:	e8 f5 fd ff ff       	call   100042 <nemu_assert>
+  10024d:	83 c4 10             	add    $0x10,%esp
+  100250:	b8 00 00 00 00       	mov    $0x0,%eax
+  100255:	8b 4d fc             	mov    -0x4(%ebp),%ecx
+  100258:	c9                   	leave  
+  100259:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  10025c:	c3                   	ret    

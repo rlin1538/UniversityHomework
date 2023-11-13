@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:reliability
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+        web-allow-others: true
+
+security:
+  jwt:
+    token:
+      secret-key: 2e7c879d69b8b87ef9d7140c320b94d5a710866b35a5d4337ba0c28dfb2bc1da
+      expiration: 3600000
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: DEBUG
+        web: ERROR
+    com.creedowl.gallery.mapper: DEBUG
+
+file:
+  suffix: txt, xls, xlsx, csv

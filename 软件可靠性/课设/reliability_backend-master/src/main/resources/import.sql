@@ -1,0 +1,2 @@
+insert into `user` (username, password, is_admin, is_locked) values ('admin', '$2a$10$FqnMCHIEVy9bBWYPe5KBmuU6Ekgxo7/vbH2hM4ZPMhAD7jFDRITTW', true, false );
+insert into `user` (username, password, is_admin, is_locked) values ('string', '$2a$10$OSlhrpFQ0bHgf/aJN/NBnOAWq/K2NUjZLBZ1R97w9d3pLwzLv7ul.', false, false);

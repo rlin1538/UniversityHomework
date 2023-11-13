@@ -1,0 +1,150 @@
+
+/home/zhengweilin/ics2021/nexus-am/tests/cputest/build/bubble-sort-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 0f 00 00 00       	call   10001e <_trm_init>
+
+0010000f <serial_init>:
+  10000f:	55                   	push   %ebp
+  100010:	89 e5                	mov    %esp,%ebp
+  100012:	90                   	nop
+  100013:	5d                   	pop    %ebp
+  100014:	c3                   	ret    
+
+00100015 <_halt>:
+  100015:	55                   	push   %ebp
+  100016:	89 e5                	mov    %esp,%ebp
+  100018:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001b:	d6                   	(bad)  
+  10001c:	eb fe                	jmp    10001c <_halt+0x7>
+
+0010001e <_trm_init>:
+  10001e:	55                   	push   %ebp
+  10001f:	89 e5                	mov    %esp,%ebp
+  100021:	83 ec 18             	sub    $0x18,%esp
+  100024:	e8 e6 ff ff ff       	call   10000f <serial_init>
+  100029:	e8 af 00 00 00       	call   1000dd <main>
+  10002e:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100031:	83 ec 0c             	sub    $0xc,%esp
+  100034:	ff 75 f4             	pushl  -0xc(%ebp)
+  100037:	e8 d9 ff ff ff       	call   100015 <_halt>
+  10003c:	83 c4 10             	add    $0x10,%esp
+  10003f:	90                   	nop
+  100040:	c9                   	leave  
+  100041:	c3                   	ret    
+
+00100042 <nemu_assert>:
+  100042:	55                   	push   %ebp
+  100043:	89 e5                	mov    %esp,%ebp
+  100045:	83 ec 08             	sub    $0x8,%esp
+  100048:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)
+  10004c:	75 0d                	jne    10005b <nemu_assert+0x19>
+  10004e:	83 ec 0c             	sub    $0xc,%esp
+  100051:	6a 01                	push   $0x1
+  100053:	e8 bd ff ff ff       	call   100015 <_halt>
+  100058:	83 c4 10             	add    $0x10,%esp
+  10005b:	90                   	nop
+  10005c:	c9                   	leave  
+  10005d:	c3                   	ret    
+
+0010005e <bubble_sort>:
+  10005e:	55                   	push   %ebp
+  10005f:	89 e5                	mov    %esp,%ebp
+  100061:	83 ec 10             	sub    $0x10,%esp
+  100064:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%ebp)
+  10006b:	eb 67                	jmp    1000d4 <bubble_sort+0x76>
+  10006d:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  100074:	eb 4e                	jmp    1000c4 <bubble_sort+0x66>
+  100076:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100079:	8b 14 85 c0 01 10 00 	mov    0x1001c0(,%eax,4),%edx
+  100080:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100083:	40                   	inc    %eax
+  100084:	8b 04 85 c0 01 10 00 	mov    0x1001c0(,%eax,4),%eax
+  10008b:	39 c2                	cmp    %eax,%edx
+  10008d:	7e 32                	jle    1000c1 <bubble_sort+0x63>
+  10008f:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100092:	8b 04 85 c0 01 10 00 	mov    0x1001c0(,%eax,4),%eax
+  100099:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  10009c:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  10009f:	40                   	inc    %eax
+  1000a0:	8b 14 85 c0 01 10 00 	mov    0x1001c0(,%eax,4),%edx
+  1000a7:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1000aa:	89 14 85 c0 01 10 00 	mov    %edx,0x1001c0(,%eax,4)
+  1000b1:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1000b4:	8d 50 01             	lea    0x1(%eax),%edx
+  1000b7:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  1000ba:	89 04 95 c0 01 10 00 	mov    %eax,0x1001c0(,%edx,4)
+  1000c1:	ff 45 fc             	incl   -0x4(%ebp)
+  1000c4:	b8 13 00 00 00       	mov    $0x13,%eax
+  1000c9:	2b 45 f8             	sub    -0x8(%ebp),%eax
+  1000cc:	39 45 fc             	cmp    %eax,-0x4(%ebp)
+  1000cf:	7c a5                	jl     100076 <bubble_sort+0x18>
+  1000d1:	ff 45 f8             	incl   -0x8(%ebp)
+  1000d4:	83 7d f8 13          	cmpl   $0x13,-0x8(%ebp)
+  1000d8:	7e 93                	jle    10006d <bubble_sort+0xf>
+  1000da:	90                   	nop
+  1000db:	c9                   	leave  
+  1000dc:	c3                   	ret    
+
+001000dd <main>:
+  1000dd:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  1000e1:	83 e4 f0             	and    $0xfffffff0,%esp
+  1000e4:	ff 71 fc             	pushl  -0x4(%ecx)
+  1000e7:	55                   	push   %ebp
+  1000e8:	89 e5                	mov    %esp,%ebp
+  1000ea:	51                   	push   %ecx
+  1000eb:	83 ec 14             	sub    $0x14,%esp
+  1000ee:	e8 6b ff ff ff       	call   10005e <bubble_sort>
+  1000f3:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  1000fa:	eb 22                	jmp    10011e <main+0x41>
+  1000fc:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  1000ff:	8b 04 85 c0 01 10 00 	mov    0x1001c0(,%eax,4),%eax
+  100106:	39 45 f4             	cmp    %eax,-0xc(%ebp)
+  100109:	0f 94 c0             	sete   %al
+  10010c:	0f b6 c0             	movzbl %al,%eax
+  10010f:	83 ec 0c             	sub    $0xc,%esp
+  100112:	50                   	push   %eax
+  100113:	e8 2a ff ff ff       	call   100042 <nemu_assert>
+  100118:	83 c4 10             	add    $0x10,%esp
+  10011b:	ff 45 f4             	incl   -0xc(%ebp)
+  10011e:	83 7d f4 13          	cmpl   $0x13,-0xc(%ebp)
+  100122:	7e d8                	jle    1000fc <main+0x1f>
+  100124:	83 7d f4 14          	cmpl   $0x14,-0xc(%ebp)
+  100128:	0f 94 c0             	sete   %al
+  10012b:	0f b6 c0             	movzbl %al,%eax
+  10012e:	83 ec 0c             	sub    $0xc,%esp
+  100131:	50                   	push   %eax
+  100132:	e8 0b ff ff ff       	call   100042 <nemu_assert>
+  100137:	83 c4 10             	add    $0x10,%esp
+  10013a:	e8 1f ff ff ff       	call   10005e <bubble_sort>
+  10013f:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  100146:	eb 22                	jmp    10016a <main+0x8d>
+  100148:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  10014b:	8b 04 85 c0 01 10 00 	mov    0x1001c0(,%eax,4),%eax
+  100152:	39 45 f4             	cmp    %eax,-0xc(%ebp)
+  100155:	0f 94 c0             	sete   %al
+  100158:	0f b6 c0             	movzbl %al,%eax
+  10015b:	83 ec 0c             	sub    $0xc,%esp
+  10015e:	50                   	push   %eax
+  10015f:	e8 de fe ff ff       	call   100042 <nemu_assert>
+  100164:	83 c4 10             	add    $0x10,%esp
+  100167:	ff 45 f4             	incl   -0xc(%ebp)
+  10016a:	83 7d f4 13          	cmpl   $0x13,-0xc(%ebp)
+  10016e:	7e d8                	jle    100148 <main+0x6b>
+  100170:	83 7d f4 14          	cmpl   $0x14,-0xc(%ebp)
+  100174:	0f 94 c0             	sete   %al
+  100177:	0f b6 c0             	movzbl %al,%eax
+  10017a:	83 ec 0c             	sub    $0xc,%esp
+  10017d:	50                   	push   %eax
+  10017e:	e8 bf fe ff ff       	call   100042 <nemu_assert>
+  100183:	83 c4 10             	add    $0x10,%esp
+  100186:	b8 00 00 00 00       	mov    $0x0,%eax
+  10018b:	8b 4d fc             	mov    -0x4(%ebp),%ecx
+  10018e:	c9                   	leave  
+  10018f:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  100192:	c3                   	ret    

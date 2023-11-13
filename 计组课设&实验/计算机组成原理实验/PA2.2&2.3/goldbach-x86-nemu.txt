@@ -1,0 +1,136 @@
+
+/home/zhengweilin/ics2021/nexus-am/tests/cputest/build/goldbach-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 0f 00 00 00       	call   10001e <_trm_init>
+
+0010000f <serial_init>:
+  10000f:	55                   	push   %ebp
+  100010:	89 e5                	mov    %esp,%ebp
+  100012:	90                   	nop
+  100013:	5d                   	pop    %ebp
+  100014:	c3                   	ret    
+
+00100015 <_halt>:
+  100015:	55                   	push   %ebp
+  100016:	89 e5                	mov    %esp,%ebp
+  100018:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001b:	d6                   	(bad)  
+  10001c:	eb fe                	jmp    10001c <_halt+0x7>
+
+0010001e <_trm_init>:
+  10001e:	55                   	push   %ebp
+  10001f:	89 e5                	mov    %esp,%ebp
+  100021:	83 ec 18             	sub    $0x18,%esp
+  100024:	e8 e6 ff ff ff       	call   10000f <serial_init>
+  100029:	e8 bc 00 00 00       	call   1000ea <main>
+  10002e:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  100031:	83 ec 0c             	sub    $0xc,%esp
+  100034:	ff 75 f4             	pushl  -0xc(%ebp)
+  100037:	e8 d9 ff ff ff       	call   100015 <_halt>
+  10003c:	83 c4 10             	add    $0x10,%esp
+  10003f:	90                   	nop
+  100040:	c9                   	leave  
+  100041:	c3                   	ret    
+
+00100042 <nemu_assert>:
+  100042:	55                   	push   %ebp
+  100043:	89 e5                	mov    %esp,%ebp
+  100045:	83 ec 08             	sub    $0x8,%esp
+  100048:	83 7d 08 00          	cmpl   $0x0,0x8(%ebp)
+  10004c:	75 0d                	jne    10005b <nemu_assert+0x19>
+  10004e:	83 ec 0c             	sub    $0xc,%esp
+  100051:	6a 01                	push   $0x1
+  100053:	e8 bd ff ff ff       	call   100015 <_halt>
+  100058:	83 c4 10             	add    $0x10,%esp
+  10005b:	90                   	nop
+  10005c:	c9                   	leave  
+  10005d:	c3                   	ret    
+
+0010005e <is_prime>:
+  10005e:	55                   	push   %ebp
+  10005f:	89 e5                	mov    %esp,%ebp
+  100061:	83 ec 10             	sub    $0x10,%esp
+  100064:	83 7d 08 01          	cmpl   $0x1,0x8(%ebp)
+  100068:	7f 07                	jg     100071 <is_prime+0x13>
+  10006a:	b8 00 00 00 00       	mov    $0x0,%eax
+  10006f:	eb 2d                	jmp    10009e <is_prime+0x40>
+  100071:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%ebp)
+  100078:	eb 17                	jmp    100091 <is_prime+0x33>
+  10007a:	8b 45 08             	mov    0x8(%ebp),%eax
+  10007d:	99                   	cltd   
+  10007e:	f7 7d fc             	idivl  -0x4(%ebp)
+  100081:	89 d0                	mov    %edx,%eax
+  100083:	85 c0                	test   %eax,%eax
+  100085:	75 07                	jne    10008e <is_prime+0x30>
+  100087:	b8 00 00 00 00       	mov    $0x0,%eax
+  10008c:	eb 10                	jmp    10009e <is_prime+0x40>
+  10008e:	ff 45 fc             	incl   -0x4(%ebp)
+  100091:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  100094:	3b 45 08             	cmp    0x8(%ebp),%eax
+  100097:	7c e1                	jl     10007a <is_prime+0x1c>
+  100099:	b8 01 00 00 00       	mov    $0x1,%eax
+  10009e:	c9                   	leave  
+  10009f:	c3                   	ret    
+
+001000a0 <goldbach>:
+  1000a0:	55                   	push   %ebp
+  1000a1:	89 e5                	mov    %esp,%ebp
+  1000a3:	83 ec 10             	sub    $0x10,%esp
+  1000a6:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%ebp)
+  1000ad:	eb 2c                	jmp    1000db <goldbach+0x3b>
+  1000af:	ff 75 fc             	pushl  -0x4(%ebp)
+  1000b2:	e8 a7 ff ff ff       	call   10005e <is_prime>
+  1000b7:	83 c4 04             	add    $0x4,%esp
+  1000ba:	85 c0                	test   %eax,%eax
+  1000bc:	74 1a                	je     1000d8 <goldbach+0x38>
+  1000be:	8b 45 08             	mov    0x8(%ebp),%eax
+  1000c1:	2b 45 fc             	sub    -0x4(%ebp),%eax
+  1000c4:	50                   	push   %eax
+  1000c5:	e8 94 ff ff ff       	call   10005e <is_prime>
+  1000ca:	83 c4 04             	add    $0x4,%esp
+  1000cd:	85 c0                	test   %eax,%eax
+  1000cf:	74 07                	je     1000d8 <goldbach+0x38>
+  1000d1:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000d6:	eb 10                	jmp    1000e8 <goldbach+0x48>
+  1000d8:	ff 45 fc             	incl   -0x4(%ebp)
+  1000db:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  1000de:	3b 45 08             	cmp    0x8(%ebp),%eax
+  1000e1:	7c cc                	jl     1000af <goldbach+0xf>
+  1000e3:	b8 00 00 00 00       	mov    $0x0,%eax
+  1000e8:	c9                   	leave  
+  1000e9:	c3                   	ret    
+
+001000ea <main>:
+  1000ea:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  1000ee:	83 e4 f0             	and    $0xfffffff0,%esp
+  1000f1:	ff 71 fc             	pushl  -0x4(%ecx)
+  1000f4:	55                   	push   %ebp
+  1000f5:	89 e5                	mov    %esp,%ebp
+  1000f7:	51                   	push   %ecx
+  1000f8:	83 ec 14             	sub    $0x14,%esp
+  1000fb:	c7 45 f4 04 00 00 00 	movl   $0x4,-0xc(%ebp)
+  100102:	eb 24                	jmp    100128 <main+0x3e>
+  100104:	ff 75 f4             	pushl  -0xc(%ebp)
+  100107:	e8 94 ff ff ff       	call   1000a0 <goldbach>
+  10010c:	83 c4 04             	add    $0x4,%esp
+  10010f:	83 f8 01             	cmp    $0x1,%eax
+  100112:	0f 94 c0             	sete   %al
+  100115:	0f b6 c0             	movzbl %al,%eax
+  100118:	83 ec 0c             	sub    $0xc,%esp
+  10011b:	50                   	push   %eax
+  10011c:	e8 21 ff ff ff       	call   100042 <nemu_assert>
+  100121:	83 c4 10             	add    $0x10,%esp
+  100124:	83 45 f4 02          	addl   $0x2,-0xc(%ebp)
+  100128:	83 7d f4 1e          	cmpl   $0x1e,-0xc(%ebp)
+  10012c:	7e d6                	jle    100104 <main+0x1a>
+  10012e:	b8 00 00 00 00       	mov    $0x0,%eax
+  100133:	8b 4d fc             	mov    -0x4(%ebp),%ecx
+  100136:	c9                   	leave  
+  100137:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  10013a:	c3                   	ret    

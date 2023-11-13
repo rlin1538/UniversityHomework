@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "nemu.h": "c",
+        "mmio.h": "c",
+        "common.h": "c"
+    }
+}

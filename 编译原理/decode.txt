@@ -1,0 +1,5 @@
+< Keyword: int >	< Keyword: main >	< ( >	< ) >	< { >	
+< Keyword: int >	< identifier: a >	< = >	< number:1 >	< ; >	
+< Keyword: float >	< identifier: b >	< = >	< number:3 >	< ; >	
+< Keyword: return >	< identifier: a >	< + >	< identifier: b >	< ; >	
+< } >	
